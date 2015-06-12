@@ -12,6 +12,8 @@
     <fieldset>
         <label for="txtBudget" class="col-sm-2">Budget:</label>
         <asp:TextBox ID="txtBudget" runat="server" required TextMode="Number" />
+        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
+            ErrorMessage="Number required" ControlToValidate="txtBudget" type="currancy"></asp:RequiredFieldValidator>
     </fieldset>
 
     <div class="col-sm-offset-2">

@@ -7,9 +7,9 @@
     <a href="department.aspx">Add Department</a>
 
     <asp:GridView ID="grdDepartments" runat="server" CssClass="table table-striped table-hover" 
-        AutoGenerateColumns="false" OnRowDeleting="grdDepartments_RowDeleting" DataKeyNames="DepartmentID">
+        AutoGenerateColumns="false" AllowSorting="true" OnSorting="grdDepartments_Sorting" DataKeyNames="DepartmentID">
     <Columns>
-        <asp:BoundField DataField="DepartmentID" HeaderText="Department ID" />
+        <asp:BoundField DataField="DepartmentID" HeaderText="Department ID" SortExpression="DepartmentID" />
         <asp:BoundField DataField="Name" HeaderText="Name" />
         <asp:BoundField DataField="Budget" HeaderText="Budget" DataFormatString="{0:C2}" />
         <asp:HyperLinkField HeaderText="Edit" Text="Edit" NavigateUrl="~/department.aspx"

@@ -12,6 +12,7 @@ namespace Lesson6
 {
     public partial class departments : System.Web.UI.Page
     {
+
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -20,6 +21,9 @@ namespace Lesson6
             {
                 GetDepartments();
             }
+
+
+
         }
         protected void GetDepartments()
         {
@@ -51,8 +55,8 @@ namespace Lesson6
             using (comp2007Entities db = new comp2007Entities())
             {
                 Department d = (from objs in db.Departments
-                             where objs.DepartmentID == DepartmentID
-                             select objs).FirstOrDefault();
+                                where objs.DepartmentID == DepartmentID
+                                select objs).FirstOrDefault();
 
                 //Delete
                 db.Departments.Remove(d);
@@ -62,6 +66,16 @@ namespace Lesson6
             // refresh the grid
             GetDepartments();
         }
+
+        protected void grdDepartments_Sorting(object sender, GridViewSortEventArgs e)
+        {
+            using (comp2007Entities db = new comp2007Entities())
+            {
+
+
+            }
+        }
+
     }
 
 }
