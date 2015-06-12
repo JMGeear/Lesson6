@@ -6,17 +6,15 @@
     <h5>All fields are required</h5>
 
      <fieldset>
-        <label for="txtDeptName">Department:</label>
+        <label for="txtDeptName" class="col-sm-2">Department:</label>
         <asp:TextBox ID="txtDeptName" runat="server" required MaxLength="50" />
     </fieldset>
     <fieldset>
-        <label for="txtBudget">Budget:</label>
+        <label for="txtBudget" class="col-sm-2">Budget:</label>
         <asp:TextBox ID="txtBudget" runat="server" required TextMode="Number" />
-        <asp:RangeValidator ID="RangeValidator1" runat="server" ErrorMessage="Must be a number"
-            ControlToValidate="txtBudget" CssClass="alert alert-danger" </asp:RangeValidator>
     </fieldset>
 
-    <div>
+    <div class="col-sm-offset-2">
         <asp:Button ID="btnSave" runat="server" Text="Save" CssClass="btn btn-primary"
              OnClick="btnSave_Click" />
     </div>

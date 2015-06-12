@@ -15,6 +15,31 @@ namespace Lesson6
         protected void Page_Load(object sender, EventArgs e)
         {
 
+            //if save wasnot clicked and we have a student id
+            if (!IsPostBack && (Request.QueryString.Count > 0))
+            {
+                GetDepartment();
+            }
+        }
+        protected void GetDepartment()
+        {
+            // populate form
+            Int32 DepartmentID = Convert.ToInt32(Request.QueryString["DepartmentID"]);
+            //Connect
+            using (comp2007Entities db = new comp2007Entities())
+            {
+                Department d = (from objs in db.Departments
+                             where objs.DepartmentID == DepartmentID
+                             select objs).FirstOrDefault();
+
+                //Map student to controls
+                if (d != null)
+                {
+                    txtDeptName.Text = d.Name;
+                    txtBudget.Text = d.Budget.ToString();
+                }
+
+            }
         }
 
         protected void btnSave_Click(object sender, EventArgs e)

@@ -7,11 +7,14 @@
     <a href="department.aspx">Add Department</a>
 
     <asp:GridView ID="grdDepartments" runat="server" CssClass="table table-striped table-hover" 
-        AutoGenerateColumns="false">
+        AutoGenerateColumns="false" OnRowDeleting="grdDepartments_RowDeleting" DataKeyNames="DepartmentID">
     <Columns>
         <asp:BoundField DataField="DepartmentID" HeaderText="Department ID" />
         <asp:BoundField DataField="Name" HeaderText="Name" />
-        <asp:BoundField DataField="Budget" HeaderText="Budget" />
+        <asp:BoundField DataField="Budget" HeaderText="Budget" DataFormatString="{0:C2}" />
+        <asp:HyperLinkField HeaderText="Edit" Text="Edit" NavigateUrl="~/department.aspx"
+            DataNavigateUrlFields="DepartmentID" DataNavigateUrlFormatString="Department.aspx?DepartmentID={0}" />
+        <asp:CommandField HeaderText="Delete" DeleteText="Delete" ShowDeleteButton="true" />
 
     </Columns>
 </asp:GridView>

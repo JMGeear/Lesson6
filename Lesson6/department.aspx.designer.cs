@@ -7,13 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Lesson6
-{
-
-
-    public partial class department
-    {
-
+namespace Lesson6 {
+    
+    
+    public partial class department {
+        
         /// <summary>
         /// txtDeptName control.
         /// </summary>
@@ -22,7 +20,7 @@ namespace Lesson6
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtDeptName;
-
+        
         /// <summary>
         /// txtBudget control.
         /// </summary>
@@ -31,7 +29,7 @@ namespace Lesson6
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtBudget;
-
+        
         /// <summary>
         /// btnSave control.
         /// </summary>

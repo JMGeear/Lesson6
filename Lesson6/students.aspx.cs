@@ -10,58 +10,56 @@ using System.Web.ModelBinding;
 
 namespace Lesson6
 {
-    public partial class departments : System.Web.UI.Page
+    public partial class students : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
             //if loading the page for the first time, populate student grid
             if (!IsPostBack)
             {
-                GetDepartments();
+                GetStudents();
             }
         }
-        protected void GetDepartments()
+        protected void GetStudents()
         {
             //connect to EF
             using (comp2007Entities db = new comp2007Entities())
             {
 
                 //query the students table using EF and LINQ
-                var Departments = from d in db.Departments
-                                  select d;
+                var Students = from s in db.Students
+                               select s;
 
                 //bind the result to the gridview
-                grdDepartments.DataSource = Departments.ToList();
-                grdDepartments.DataBind();
+                grdStudents.DataSource = Students.ToList();
+                grdStudents.DataBind();
 
             }
-
         }
 
-        protected void grdDepartments_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        protected void grdStudents_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
             //store which row was clicked
             Int32 selectedRow = e.RowIndex;
 
             //get the select student ID using the grids data key collection
-            Int32 DepartmentID = Convert.ToInt32(grdDepartments.DataKeys[selectedRow].Values["DepartmentID"]);
+            Int32 StudentID = Convert.ToInt32(grdStudents.DataKeys[selectedRow].Values["StudentID"]);
 
             //connect to EF to remove student from db
             using (comp2007Entities db = new comp2007Entities())
             {
-                Department d = (from objs in db.Departments
-                             where objs.DepartmentID == DepartmentID
+                Student s = (from objs in db.Students
+                             where objs.StudentID == StudentID
                              select objs).FirstOrDefault();
 
                 //Delete
-                db.Departments.Remove(d);
+                db.Students.Remove(s);
                 db.SaveChanges();
             }
 
             // refresh the grid
-            GetDepartments();
+            GetStudents();
         }
-    }
 
+    }
 }
